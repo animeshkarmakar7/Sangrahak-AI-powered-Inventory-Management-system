@@ -27,8 +27,7 @@ The system combines a **React frontend**, **Node.js/Express application backend*
 - [17. Performance & Evaluation](#17-performance--evaluation)
 - [18. Project Structure](#18-project-structure)
 - [19. Getting Started](#19-getting-started)
-- [20. Future Enhancements](#20-future-enhancements)
-- [21. Authors](#21-authors)
+
 
 ---
 
