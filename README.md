@@ -40,6 +40,203 @@ graph TD
 
 ---
 
+
+# UI Screenshots
+
+The following screenshots show the implemented SANGRAHAK operational interface. They are kept under `docs/ui/` so the README can be used as both product documentation and a visual product walkthrough.
+
+## Operations Intelligence Dashboard
+
+The dashboard is the main command center for inventory operations. It combines portfolio KPIs, inventory valuation, stockout risk, active depots, critical SKUs, AI model confidence, demand/sales analytics, category distribution, and inventory-health indicators.
+
+![SANGRAHAK Operations Intelligence Dashboard](docs/ui/dashboard.jpg)
+
+**Key UI components**
+- KPI cards for total products, inventory value, stockout risk, active depots, critical SKUs, and AI model score.
+- Demand & Sales Intelligence chart with Bar, Line, and Area modes and 7/30/90-day ranges.
+- Category Distribution donut chart.
+- Inventory Health risk overview.
+- Global search, notifications, theme control, network/depot selector, and bulk reorder action.
+
+## Demand Intelligence & Logistics Ledger
+
+This screen connects AI-ranked at-risk SKUs with the operational stock-movement ledger. Each risk card exposes remaining days, forecast, current stock, reorder threshold, suggested quantity, and a direct reorder action. The ledger provides date, SKU/product, movement type, source depot, destination depot, quantity, and transaction status.
+
+![SANGRAHAK Demand Intelligence and Logistics Ledger](docs/ui/demand-logistics.jpg)
+
+**Key UI components**
+- AI-ranked at-risk SKU cards.
+- `HIGH` / urgent risk badges.
+- Stock, forecast, days remaining, and reorder-point indicators.
+- Suggested reorder quantity.
+- **Reorder Now** action.
+- Logistics transaction table with stock-in, stock-out, and adjustment states.
+- Transaction filtering and export/download controls.
+
+## Inventory Management
+
+The inventory screen provides a searchable, filterable SKU table with stock health and forecasting information in the same operational view.
+
+![SANGRAHAK Inventory Management](docs/ui/inventory.jpg)
+
+**Key UI components**
+- Total Items, Low Stock Items, Expired Items, and Out of Stock KPI cards.
+- Category and depot filters.
+- Product search.
+- Pagination/page-size selector.
+- CSV upload.
+- Add Items action.
+- Selectable inventory table.
+- Product image, SKU, name, price, stock, stock-out horizon, reorder quantity, risk, and forecast columns.
+
+## Supplier Risk Radar
+
+The Supplier Risk Radar provides procurement-focused threat intelligence by comparing supplier delay, quality, fulfillment, and overall risk.
+
+![SANGRAHAK Supplier Risk Radar](docs/ui/supplier-risk.jpg)
+
+**Key UI components**
+- Active Risk Events.
+- Average Delivery Delay.
+- Quality Failures.
+- Procurement Loss Risk.
+- Search/filter control.
+- Supplier risk table.
+- Delay, quality, and fulfillment score bars.
+- Overall risk score.
+- Critical/Stable alert badges.
+- Supplier **Analysis** drill-down action.
+
+## Sangrahak AI Chatbot
+
+The conversational assistant provides a natural-language interface over inventory operations. The UI exposes transaction history, active alerts, and inventory analytics as supported information domains and provides quick-start prompts for common operational questions.
+
+![SANGRAHAK AI Chatbot](docs/ui/ai-chatbot.jpg)
+
+**Key UI components**
+- Sangrahak AI identity/status indicator.
+- Conversation area.
+- Quick-start prompt cards.
+- Suggested operational questions.
+- Chat input and send action.
+- Clear conversation control.
+- Contexts for transaction history, active alerts, and inventory analytics.
+
+## Depot Management
+
+Depot Management provides a network-level view of warehouse capacity, utilization, active locations, and critical alerts.
+
+![SANGRAHAK Depot Management](docs/ui/depot-management.jpg)
+
+**Key UI components**
+- Total Depots.
+- Total Capacity.
+- Active Depots.
+- Critical Alerts.
+- Depot search.
+- All / Healthy / Warning / Critical filters.
+- Depot cards with location, utilization, stored SKUs, capacity, and status.
+- View Details, Edit, and Delete actions.
+- Register New Depot action.
+
+## Product Details
+
+The Product Details modal gives a focused drill-down without leaving the inventory workflow.
+
+![SANGRAHAK Product Details](docs/ui/product-details.jpg)
+
+**Key UI components**
+- Product image and identity.
+- SKU.
+- Inventory status badge.
+- Category and supplier.
+- Price.
+- Total stock.
+- Reorder point.
+- Total inventory value.
+- Depot distribution with per-depot quantities and visual allocation bars.
+- Close modal action.
+
+## Reports & Export
+
+The reporting screen turns operational data into management-level summaries and exception lists.
+
+![SANGRAHAK Reports and Export](docs/ui/reports-export.jpg)
+
+**Key UI components**
+- Category Value Breakdown.
+- Depot Utilization.
+- Capacity-versus-utilization progress bars.
+- SKU counts by depot.
+- Critical Low-Stock Items table.
+- Current stock and reorder-point comparison.
+- Urgency indicators.
+- Export/reporting controls.
+
+### UI information architecture
+
+```text
+SANGRAHAK
+├── Dashboard
+│   ├── KPI Cards
+│   ├── Demand & Sales Intelligence
+│   ├── Category Distribution
+│   └── Inventory Health
+├── Demand Intelligence
+│   ├── AI-Ranked At-Risk SKUs
+│   └── Logistics Ledger
+├── Inventory
+│   ├── KPI Summary
+│   ├── Search / Filters
+│   ├── Inventory Table
+│   └── Product Details Modal
+├── Supplier Risk Radar
+│   ├── Procurement Risk KPIs
+│   └── Supplier Risk Intelligence Desk
+├── AI Chatbot
+│   ├── Conversation
+│   ├── Quick Starts
+│   └── Inventory Questions
+├── Depot Management
+│   ├── Network KPIs
+│   ├── Depot Filters
+│   └── Depot Cards
+└── Reports & Export
+    ├── Category Value
+    ├── Depot Utilization
+    └── Critical Low-Stock Items
+```
+
+### Reusable UI component reference
+
+| Component | Role |
+|---|---|
+| KPI Card | Presents a high-value operational metric with context/status. |
+| Risk Badge | Makes `SAFE`, `HIGH`, `CRITICAL`, and similar states immediately scannable. |
+| Status Indicator | Communicates live/healthy/warning/critical state. |
+| Progress Bar | Visualizes depot utilization, supplier factors, and allocation. |
+| Search Input | Enables fast SKU, product, supplier, or depot discovery. |
+| Filter Control | Narrows data by category, depot, status, or risk. |
+| Date/Range Selector | Changes the analytical time horizon. |
+| Chart Toggle | Switches between Bar, Line, and Area representations. |
+| Data Table | Supports dense operational records and comparison. |
+| Selection Checkbox | Enables single/bulk inventory operations. |
+| Pagination | Keeps large datasets manageable. |
+| Action Button | Triggers operational workflows such as reorder, add, edit, or analysis. |
+| Bulk Action | Applies an operation to multiple selected records. |
+| Modal | Provides contextual drill-down without leaving the current screen. |
+| Quick Prompt | Starts common AI assistant tasks with one click. |
+| Chat Message | Represents conversational user/assistant interaction. |
+| Chart Legend | Explains category/risk visualization. |
+| Notification Control | Exposes active operational alerts. |
+| Depot Selector | Scopes operations to a network or depot. |
+| CSV Upload | Imports inventory data in bulk. |
+| Export Control | Downloads operational/reporting data. |
+| Navigation Item | Moves between functional modules. |
+| Drill-down Action | Opens deeper analysis for a supplier/product/depot. |
+
+---
+
 ## 🗄️ Database Structure (MongoDB Schema)
 
 The database is built using a multi-tenant approach where `userId` isolated data for individual accounts.
