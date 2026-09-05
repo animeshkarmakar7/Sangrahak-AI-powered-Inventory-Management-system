@@ -93,33 +93,13 @@ SANGRAHAK follows a clear path from **user action → API → data → AI → de
 
 ## 3.1 Normal Inventory Operation
 
-```mermaid
-sequenceDiagram
-    participant User
-    participant React
-    participant Node as Node/Express
-    participant Mongo as MongoDB
-    participant AI as Python/Flask
-    participant Redis as Redis
-
-    User->>React: Add / update / search inventory
-    React->>Node: REST API request
-    Node->>Node: Validate request + business rules
-    Node->>Mongo: Read / write inventory data
-    Mongo-->>Node: Persisted / queried data
-
-    alt AI analysis required
-        Node->>AI: Request forecast / risk analysis
-        AI->>Mongo: Read historical data
-        Mongo-->>AI: Historical inventory + transaction data
-        AI->>AI: Run ML / forecasting pipeline
-        AI-->>Node: Prediction + score + recommendation
-        Node->>Mongo: Store forecast / AI result
-    end
-
-    Node-->>React: API response
-    React-->>User: Updated operational view
-```
+<p align="center">
+  <img
+    src="docs/ui/flowimg.png"
+    alt="SANGRAHAK High-Level Architecture"
+    width="100%"
+  />
+</p>
 
 ## 3.2 Example: Product Approaching Stock-Out
 
