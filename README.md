@@ -63,70 +63,13 @@ The core design separates **transaction/business processing** from **AI/ML compu
 
 ## 2.1 High-Level Architecture
 
-```mermaid
-flowchart TB
-    U[User / Admin]
-
-    subgraph FE["Presentation Layer"]
-        R[React 19]
-        V[Vite]
-        TW[Tailwind CSS]
-        FM[Framer Motion]
-        RC[Recharts]
-        AX[Axios]
-    end
-
-    subgraph APP["Application Layer"]
-        N[Node.js + Express 5]
-        AUTH[JWT Authentication]
-        M[Mongoose]
-        WS[WebSocket Layer]
-        MAIL[Nodemailer]
-        XLS[ExcelJS]
-    end
-
-    subgraph AI["AI / ML Layer"]
-        F[Python 3.11 + Flask]
-        ARIMA[ARIMA Forecasting]
-        XGB[XGBoost Stock Classification]
-        RF[Random Forest Supplier Risk]
-        SK[Scikit-learn]
-        PD[Pandas + NumPy]
-    end
-
-    subgraph DATA["Data & Infrastructure"]
-        DB[(MongoDB Atlas)]
-        REDIS[(Redis / Upstash)]
-        ENV[Dotenv / Environment Configuration]
-    end
-
-    U --> R
-    R --> AX
-    R --> FM
-    R --> RC
-    R --> N
-
-    N --> AUTH
-    N --> M
-    M --> DB
-    N --> WS
-    N --> MAIL
-    N --> XLS
-
-    R -->|AI API Requests| F
-    F --> ARIMA
-    F --> XGB
-    F --> RF
-    F --> SK
-    F --> PD
-    F --> DB
-
-    N --> REDIS
-    F --> REDIS
-
-    ENV -.-> N
-    ENV -.-> F
-```
+<p align="center">
+  <img
+    src="docs/ui/architecture.png"
+    alt="SANGRAHAK High-Level Architecture"
+    width="100%"
+  />
+</p>
 
 ## 2.2 Responsibility of Each Layer
 
